@@ -20,7 +20,8 @@ read_log.py
 deploy_hf.py
 test_inference_format.py
 *.log
-*.txt
+validation_output.txt
+llm_test_result.txt
 
 # IDEs
 .vscode/

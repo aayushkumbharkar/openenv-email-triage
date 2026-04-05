@@ -1,0 +1,65 @@
+# OpenEnv Environment Configuration
+# Email Triage Environment v1.0.0
+
+name: email-triage-env
+version: "1.0.0"
+description: >
+  An OpenEnv environment that simulates real-world email inbox management.
+  An AI agent must classify emails (spam/urgent/normal), prioritize them by
+  importance, and generate appropriate responses. Designed to evaluate
+  language model capabilities on structured decision-making tasks.
+
+author: "OpenEnv Contributor"
+license: "MIT"
+
+# Entry point
+environment:
+  module: email_env.environment
+  class: EmailTriageEnv
+
+# Model definitions
+models:
+  observation: email_env.models.EmailObservation
+  action: email_env.models.EmailAction
+  reward: email_env.models.EmailReward
+
+# Tasks
+tasks:
+  - name: classification
+    difficulty: easy
+    description: "Classify emails as spam, urgent, or normal"
+    reward_weight: 0.3
+    grader: email_env.graders.grade_classification
+
+  - name: prioritization
+    difficulty: medium
+    description: "Rank emails by priority from most to least important"
+    reward_weight: 0.3
+    grader: email_env.graders.grade_prioritization
+
+  - name: response_generation
+    difficulty: hard
+    description: "Generate appropriate responses for each email"
+    reward_weight: 0.4
+    grader: email_env.graders.grade_response
+
+# Inference configuration
+inference:
+  script: inference.py
+  max_steps: 8
+  timeout_minutes: 20
+  env_vars:
+    - API_BASE_URL
+    - MODEL_NAME
+    - HF_TOKEN
+
+# Resource constraints
+resources:
+  max_vcpu: 2
+  max_ram_gb: 8
+  max_runtime_minutes: 20
+
+# Deployment
+deployment:
+  platform: huggingface-spaces
+  dockerfile: Dockerfile

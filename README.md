@@ -1,3 +1,13 @@
+---
+title: OpenEnv Email Triage Environment
+emoji: 📬
+colorFrom: blue
+colorTo: gray
+sdk: docker
+app_port: 7860
+pinned: false
+---
+
 # 📬 Email Triage Environment – OpenEnv
 
 A production-ready [OpenEnv](https://github.com/openenv) environment that simulates **real-world email inbox management**. An AI agent must classify emails, prioritize them by importance, and generate contextually appropriate responses.

@@ -20,7 +20,7 @@ dependencies = [
 ]
 
 [project.scripts]
-server = "server.app:run_server"
+server = "server.app:main"
 
 [project.urls]
 "Homepage" = "https://github.com/aayushkumbharkar/openenv-email-triage"

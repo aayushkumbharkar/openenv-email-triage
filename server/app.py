@@ -76,6 +76,9 @@ def state():
     return env.state().model_dump()
 
 
-if __name__ == "__main__":
+def run_server():
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=7860)
+
+if __name__ == "__main__":
+    run_server()

@@ -7,5 +7,5 @@ description: >
   generate appropriate responses.
 type: space
 runtime: fastapi
-app: app_server:app
+app: server.app:app
 port: 7860

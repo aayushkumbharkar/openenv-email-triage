@@ -19,6 +19,5 @@ ENV PYTHONUNBUFFERED=1
 # Expose port for HF Spaces (FastAPI server)
 EXPOSE 7860
 
-# Default command: run inference
-# For HF Spaces, override with: uvicorn app_server:app --host 0.0.0.0 --port 7860
-CMD ["python", "inference.py"]
+# Default command: run FastAPI server for HF Spaces
+CMD ["uvicorn", "app_server:app", "--host", "0.0.0.0", "--port", "7860"]

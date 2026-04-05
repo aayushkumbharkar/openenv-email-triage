@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "email-triage-env"
+version = "1.0.0"
+description = "A production-ready OpenEnv environment for email triage tasks."
+authors = [
+    { name = "Aayush", email = "aayush@example.com" }
+]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.100.0",
+    "uvicorn>=0.20.0",
+    "pydantic>=2.0.0",
+    "openai>=1.0.0"
+]
+
+[project.urls]
+"Homepage" = "https://github.com/aayushkumbharkar/openenv-email-triage"

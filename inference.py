@@ -28,9 +28,16 @@ from email_env.models import EmailAction
 # Configuration
 # ---------------------------------------------------------------------------
 
-API_BASE_URL = os.getenv("API_BASE_URL", "https://router.huggingface.co/v1")
-MODEL_NAME = os.getenv("MODEL_NAME", "Qwen/Qwen2.5-72B-Instruct")
-HF_TOKEN = os.getenv("HF_TOKEN")
+if "API_BASE_URL" not in os.environ:
+    os.environ["API_BASE_URL"] = "https://router.huggingface.co/v1"
+if "API_KEY" not in os.environ:
+    os.environ["API_KEY"] = os.environ.get("HF_TOKEN", "sk-placeholder")
+if "MODEL_NAME" not in os.environ:
+    os.environ["MODEL_NAME"] = "Qwen/Qwen2.5-72B-Instruct"
+
+API_BASE_URL = os.environ["API_BASE_URL"]
+MODEL_NAME = os.environ["MODEL_NAME"]
+API_KEY = os.environ["API_KEY"]
 MAX_STEPS = 8
 BENCHMARK_NAME = "email-triage-env"
 
@@ -39,8 +46,8 @@ BENCHMARK_NAME = "email-triage-env"
 # ---------------------------------------------------------------------------
 
 client = OpenAI(
-    base_url=API_BASE_URL,
-    api_key=HF_TOKEN if HF_TOKEN else os.environ.get("OPENAI_API_KEY", "sk-placeholder"),
+    base_url=os.environ["API_BASE_URL"],
+    api_key=os.environ["API_KEY"],
 )
 
 # ---------------------------------------------------------------------------
